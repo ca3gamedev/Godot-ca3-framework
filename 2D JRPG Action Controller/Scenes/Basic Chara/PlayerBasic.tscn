@@ -1,0 +1,47 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://2D/Hero/Front/tile000.png" type="Texture" id=1]
+[ext_resource path="res://2D/Hero/Front/tile003.png" type="Texture" id=2]
+[ext_resource path="res://2D/Hero/Front/tile002.png" type="Texture" id=3]
+[ext_resource path="res://2D/Hero/Front/tile001.png" type="Texture" id=4]
+[ext_resource path="res://2D/Hero/Back/tile012.png" type="Texture" id=5]
+[ext_resource path="res://2D/Hero/Back/tile015.png" type="Texture" id=6]
+[ext_resource path="res://2D/Hero/Side/tile008.png" type="Texture" id=7]
+[ext_resource path="res://2D/Hero/Back/tile014.png" type="Texture" id=8]
+[ext_resource path="res://2D/Hero/Side/tile009.png" type="Texture" id=9]
+[ext_resource path="res://2D/Hero/Side/tile011.png" type="Texture" id=10]
+[ext_resource path="res://2D/Hero/Side/tile010.png" type="Texture" id=11]
+[ext_resource path="res://2D/Hero/Back/tile013.png" type="Texture" id=12]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "Back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "Front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "Side",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+height = 4.0
+
+[node name="Player" type="KinematicBody2D"]
+
+[node name="Ani" type="Node2D" parent="."]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Ani"]
+frames = SubResource( 1 )
+animation = "Front"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 16 )
+shape = SubResource( 2 )
